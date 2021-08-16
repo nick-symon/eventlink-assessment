@@ -1,7 +1,8 @@
 require "test_helper"
 
 class LeadTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "valid instance" do
+    lead = leads(:nick)
+    assert lead.valid?
+  end
 end

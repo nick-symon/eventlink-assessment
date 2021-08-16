@@ -1,11 +1,20 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+nick: 
+  first_name: "Nick"
+  last_name: "Symon"
+  address: "123 Fake Street"
+  apartment_number: "Unit 10"
+  city: "Chicago"
+  state: "Illinois"
+  zip: 60618
+  email: "symon.nick@gmail.com"
+  email_confirmation: "symon.nick@gmail.com"
+  purchase_timing: "1 Month"
+  vehicle: "LEAF" 
+  likelihood: "Definitely would consider"
+  opinion: 10
+  release_acceptance: true
+  notification_acceptance: true
+  contact_acceptance: true
+  signature: "nicksymoni"
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
