@@ -9,12 +9,15 @@ import * as ActiveStorage from "@rails/activestorage"
 import SignaturePad from "signature_pad"
 import $ from 'jquery';
 import 'parsleyjs';
-import "channels"
+import "channels";
+import "bootstrap";
 // import parsley
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$('#carousel').carousel()
 
 $(document).ready(function() { 
   var canvas = document.querySelector("canvas");
