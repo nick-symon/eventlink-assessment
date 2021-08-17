@@ -20,42 +20,104 @@
     </div>
   </div>
   <div class="form-row">
-    <%= f.label :city  %>
-    <%= f.text_field :city  %>
+    <div class="form-group col-md-6">
+      <%= f.label :city  %>
+      <%= f.text_field :city, class: "form-control"  %>
+    </div>
     <%# state will eventually be a drop down %>
-    <%= f.label :state  %>
-    <%= f.text_field :state  %>
-    <%= f.label :zip  %>
-    <%= f.text_field :zip  %>
+    <div class="form-group col-md-3">
+      <%= f.label :state  %>
+      <%= f.text_field :state, class: "form-control"  %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= f.label :zip  %>
+      <%= f.text_field :zip, class: "form-control"  %>
+    </div>
   </div>
-  <%= f.label :email  %>
-  <%= f.text_field :email  %>
-  <%= f.label :email_confirmation  %>
-  <%= f.text_field :email_confirmation  %>
-  <%= f.label :purchase_timing, "I plan on purchasing my next vehicle within"  %>
-  <%= f.collection_radio_buttons :purchase_timing, Lead::PURCHASE_TIMING_OPTIONS, :itself, :itself  %>
-  <%= f.label :vehicle, "I am interested in the following Vehicles"  %>
-  <%= f.collection_check_boxes :vehicle, Lead::VEHICLE_OPTIONS, :strip, :strip  %>
-  <%= f.label :likelihood, "How likely would you be to consider Nissan for your new vehicle purchase?"  %>
-  <%= f.collection_radio_buttons :likelihood, Lead::LIKELIHOOD_OPTIONS, :itself, :itself  %>
-  <%= f.label :opinion, "What is your overall opinion of Nissan?"  %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :email  %>
+      <%= f.text_field :email, class: "form-control"  %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :email_confirmation  %>
+      <%= f.text_field :email_confirmation, class: "form-control"  %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <%= f.label :purchase_timing, "I plan on purchasing my next vehicle within"  %>
+        <%= f.collection_radio_buttons :purchase_timing, Lead::PURCHASE_TIMING_OPTIONS, :itself, :itself do |b| %>
+          <div class="form-check">
+            <%= b.radio_button class:"form-check-input" %>
+            <%= b.label class:"form-check-label" %>
+          </div>
+        <% end %>
+    </div>
 
-  <span>Excellent</span>
-  <%= f.collection_radio_buttons :opinion, (1..10).map{|n| [n,n]}, :first, :last %>
-  <span>Poor</span>
+    <div class="form-group col-md-6">
+        <%= f.label :vehicle, "I am interested in the following Vehicles"  %>
+        <%= f.collection_check_boxes :vehicle, Lead::VEHICLE_OPTIONS, :strip, :strip do |b|  %>
+          <div class="form-check">
+            <%= b.check_box class:"form-check-input" %>
+            <%= b.label class:"form-check-label" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :likelihood, "How likely would you be to consider Nissan for your new vehicle purchase?"  %>
+      <%= f.collection_radio_buttons :likelihood, Lead::LIKELIHOOD_OPTIONS, :itself, :itself do |b|  %>
+        <div class="form-check">
+          <%= b.radio_button class:"form-check-input" %>
+          <%= b.label class:"form-check-label" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+    <%= f.label :opinion, "What is your overall opinion of Nissan?"  %>
+    <br>
+    <span>Excellent</span>
+    <%= f.collection_radio_buttons :opinion, (1..10).map{|n| [n,n]}, :first, :last do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.radio_button class:"form-check-input" %>
+        <%= b.label class:"form-check-label" %>
+      </div>
+    <% end %>
+    <span>Poor</span>
+    </div>
+  </div>
 
   <p>RELEASE OF LIABILITY AND INDEMNITY AGREEMENT AND PUBLICITY AUTHORIZATION</p>
   <%# lorem ipsum indemnity text goes there %>
 
-  <%= f.check_box :release_acceptance %>
-  <%= f.label :release_acceptance, "I have read and understood this entire agreement" %>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.check_box :release_acceptance %>
+      <%= f.label :release_acceptance, "I have read and understood this entire agreement" %>
+    </div>
+  </div>
 
   <%# Add signed on next to 'clear signature button' using todays date helper %>
-  <%= f.check_box :notification_acceptance %>
-  <%= f.label :notification_acceptance, "I would like to receive exciting product and event news from Nissan." %>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.check_box :notification_acceptance %>
+      <%= f.label :notification_acceptance, "I would like to receive exciting product and event news from Nissan." %>
+    </div>
+  </div>
 
-  <%= f.check_box :contact_acceptance %>
-  <%= f.label :contact_acceptance, "I would like to be contacted by a Nissan dealer for more vehicle information." %>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.check_box :contact_acceptance %>
+      <%= f.label :contact_acceptance, "I would like to be contacted by a Nissan dealer for more vehicle information." %>
+    </div>
+  </div>
 
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", class: "btn btn-danger btn-lg btn-block" %>
 <% end %>
