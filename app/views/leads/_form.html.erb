@@ -95,12 +95,27 @@
   </div>
 
   <p>RELEASE OF LIABILITY AND INDEMNITY AGREEMENT AND PUBLICITY AUTHORIZATION</p>
-  <%# lorem ipsum indemnity text goes there %>
+  <%# lorem ipsum indemnity text goes there probably should use a partial%>
+  <%= render partial: "release-text" %>
 
   <div class="form-row">
     <div class="form-group col-md-12">
       <%= f.check_box :release_acceptance %>
       <%= f.label :release_acceptance, "I have read and understood this entire agreement" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.hidden_field :signature, class: "signature_pad_input" %>
+        <div id="signature-pad" class="signature-pad">
+          <div class="signature-pad--body border">
+            <canvas></canvas>
+          </div> 
+          <div class="signature-pad--footer">
+            <button>Clear Signature</button>
+          </div>
+        </div>
     </div>
   </div>
 
