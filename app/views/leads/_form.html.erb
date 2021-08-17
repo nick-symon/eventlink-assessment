@@ -113,7 +113,7 @@
             <canvas></canvas>
           </div> 
           <div class="signature-pad--footer">
-            <button>Clear Signature</button>
+            <button class="signature-pad--clear">Clear Signature</button>
           </div>
         </div>
     </div>
@@ -134,5 +134,5 @@
     </div>
   </div>
 
-  <%= f.submit "Submit", class: "btn btn-danger btn-lg btn-block" %>
+  <%= f.submit "Submit", class: "btn btn-danger btn-lg btn-block signature-pad--save" %>
 <% end %>

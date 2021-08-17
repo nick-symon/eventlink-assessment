@@ -18,9 +18,16 @@ ActiveStorage.start()
 
 $(document).ready(function() { 
   var canvas = document.querySelector("canvas");
+  canvas.height = canvas.offsetHeight;
+  canvas.width = canvas.offsetWidth;
   var signaturePad = new SignaturePad(canvas, {
-    // It's Necessary to use an opaque color when saving image as JPEG;
-    // this option can be omitted if only saving as PNG or SVG
     backgroundColor: 'rgb(255, 255, 255)'
+  });
+  $('.signature-pad--clear').on("click", function(event){
+    event.preventDefault();
+    signaturePad.clear();
+  });
+  $('.signature-pad--save').on("click",function(event){
+    $('.signature_pad_input').val(signaturePad.toDataURL());
   });
  });
