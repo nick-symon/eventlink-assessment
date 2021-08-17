@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import SignaturePad from "signature_pad"
 import $ from 'jquery';
+import 'parsleyjs';
 import "channels"
 // import parsley
 
