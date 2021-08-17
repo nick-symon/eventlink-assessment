@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_180229) do
+ActiveRecord::Schema.define(version: 2021_08_17_163748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2021_08_16_180229) do
     t.boolean "release_acceptance"
     t.boolean "notification_acceptance"
     t.boolean "contact_acceptance"
-    t.string "signature"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.binary "signature"
   end
 
 end
