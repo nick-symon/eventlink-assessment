@@ -113,7 +113,8 @@
             <canvas></canvas>
           </div> 
           <div class="signature-pad--footer">
-            <button class="signature-pad--clear">Clear Signature</button>
+            <span>SIGNED ON <%= DateTime.now.strftime('%m/%d/%Y') %></span>
+            <button class="btn btn-secondary signature-pad--clear">Clear Signature</button>
           </div>
         </div>
     </div>
