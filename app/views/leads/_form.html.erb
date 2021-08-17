@@ -44,8 +44,9 @@
       <%= f.text_field :email_confirmation, class: "form-control"  %>
     </div>
   </div>
+
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 bg-light border rounded">
         <%= f.label :purchase_timing, "I plan on purchasing my next vehicle within"  %>
         <%= f.collection_radio_buttons :purchase_timing, Lead::PURCHASE_TIMING_OPTIONS, :itself, :itself do |b| %>
           <div class="form-check">
@@ -54,8 +55,7 @@
           </div>
         <% end %>
     </div>
-
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 bg-light border rounded">
         <%= f.label :vehicle, "I am interested in the following Vehicles"  %>
         <%= f.collection_check_boxes :vehicle, Lead::VEHICLE_OPTIONS, :strip, :strip do |b|  %>
           <div class="form-check">
@@ -67,7 +67,7 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-12 bg-light border rounded">
       <%= f.label :likelihood, "How likely would you be to consider Nissan for your new vehicle purchase?"  %>
       <%= f.collection_radio_buttons :likelihood, Lead::LIKELIHOOD_OPTIONS, :itself, :itself do |b|  %>
         <div class="form-check">
@@ -79,7 +79,7 @@
   </div>
 
 
-  <div class="form-row">
+  <div class="form-row bg-light border rounded">
     <div class="form-group col-md-12">
     <%= f.label :opinion, "What is your overall opinion of Nissan?"  %>
     <br>
@@ -105,7 +105,7 @@
   </div>
 
   <%# Add signed on next to 'clear signature button' using todays date helper %>
-  <div class="form-row">
+  <div class="row">
     <div class="form-group col-md-12">
       <%= f.check_box :notification_acceptance %>
       <%= f.label :notification_acceptance, "I would like to receive exciting product and event news from Nissan." %>
