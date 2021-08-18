@@ -1,24 +1,15 @@
 class Lead < ApplicationRecord
-
-  PURCHASE_TIMING_OPTIONS = [
-    "1 Month",
-    "1-3 Months",
-    "4-6 Months",
-    "7-12 Months",
-    "More than 1 Year"
-  ] 
-
-  VEHICLE_OPTIONS = [
-    "LEAF",
-    "LEAF PLUS"
-  ]
-
-  LIKELIHOOD_OPTIONS = [
-    "Definitely would consider",
-    "Probably would consider",
-    "Might or might not consider",
-    "Probably would not consider",
-    "Definitely would not consider",
-  ]
-
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip, presence: true
+  validates :email, presence: true
+  validates :email, confirmation: true
+  validates :email_confirmation, presence: true
+  validates :purchase_timing, presence: true
+  validates :vehicle, presence: true
+  validates :likelihood, presence: true
+  validates :opinion, presence: true
 end

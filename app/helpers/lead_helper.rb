@@ -55,4 +55,42 @@ module LeadHelper
       ['Wyoming', 'WY']
     ]
   end
+
+ def purchase_timing_options
+    [
+      "1 Month",
+      "1-3 Months",
+      "4-6 Months",
+      "7-12 Months",
+      "More than 1 Year"
+    ] 
+  end
+
+  def vehicle_options
+    [
+      "LEAF",
+      "LEAF PLUS"
+    ]
+  end
+
+  def likelihood_options
+    [
+      "Definitely would consider",
+      "Probably would consider",
+      "Might or might not consider",
+      "Probably would not consider",
+      "Definitely would not consider",
+    ]
+  end
+
+  def inline_errors(model, model_attribute)
+    result = ""
+    if model.errors[model_attribute].any?
+         model.errors[model_attribute].each do |message|
+            result += "#{message}"
+        end
+        return "<span class=\"error_message\">#{result}</ul>".html_safe
+    end
+  end
+
 end

@@ -19,6 +19,7 @@ ActiveStorage.start()
 
 $('#carousel').carousel()
 
+
 $(document).ready(function() { 
   var canvas = document.querySelector("canvas");
   canvas.height = canvas.offsetHeight;
@@ -33,4 +34,5 @@ $(document).ready(function() {
   $('.signature-pad--save').on("click",function(event){
     $('.signature_pad_input').val(signaturePad.toDataURL());
   });
+
  });

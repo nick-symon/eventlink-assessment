@@ -1,80 +1,92 @@
-<%= form_with model: lead do |f|  %>
+<%= form_with model: lead, id: 'form' do |f|  %>
   <div class="form-row">
     <div class="form-group col-md-6">
       <%= f.label :first_name  %>
       <%= f.text_field :first_name, class: "form-control"  %>
+      <%= inline_errors(lead, :first_name) %>
     </div>
     <div class="form-group col-md-6">
       <%= f.label :last_name  %>
       <%= f.text_field :last_name, class: "form-control" %>
+      <%= inline_errors(lead, :last_name) %>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-8">
       <%= f.label :address  %>
-      <%= f.text_field :address, class: "form-control"  %>
+      <%= f.text_field :address ,class: "form-control"  %>
+      <%= inline_errors(lead, :address) %>
     </div>
     <div class="form-group col-md-4">
       <%= f.label :apartment_number, "Apt/Suite"  %>
       <%= f.text_field :apartment_number, class: "form-control"  %>
+      <%= inline_errors(lead, :apartment_number) %>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <%= f.label :city  %>
       <%= f.text_field :city, class: "form-control"  %>
+      <%= inline_errors(lead, :city) %>
     </div>
     <%# state will eventually be a drop down %>
     <div class="form-group col-md-3">
       <%= f.label :state  %>
-      <%= f.collection_select :state, us_states, :last, :first, {include_blank: false}, {class: "custom-select"}  %>
+      <%= f.collection_select :state, us_states, :last, :first, {include_blank: true}, {class: "custom-select"}  %>
+      <%= inline_errors(lead, :state) %>
     </div>
     <div class="form-group col-md-3">
       <%= f.label :zip  %>
       <%= f.text_field :zip, class: "form-control"  %>
+      <%= inline_errors(lead, :zip) %>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <%= f.label :email  %>
       <%= f.text_field :email, class: "form-control"  %>
+      <%= inline_errors(lead, :email) %>
     </div>
     <div class="form-group col-md-6">
       <%= f.label :email_confirmation  %>
       <%= f.text_field :email_confirmation, class: "form-control"  %>
+      <%= inline_errors(lead, :email_confirmation) %>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6 bg-light border rounded">
         <%= f.label :purchase_timing, "I plan on purchasing my next vehicle within"  %>
-        <%= f.collection_radio_buttons :purchase_timing, Lead::PURCHASE_TIMING_OPTIONS, :itself, :itself do |b| %>
+        <%= f.collection_radio_buttons :purchase_timing, purchase_timing_options, :itself, :itself do |b| %>
           <div class="form-check">
             <%= b.radio_button class:"form-check-input" %>
             <%= b.label class:"form-check-label" %>
           </div>
         <% end %>
+        <%= inline_errors(lead, :purchase_timing) %>
     </div>
     <div class="form-group col-md-6 bg-light border rounded">
         <%= f.label :vehicle, "I am interested in the following Vehicles"  %>
-        <%= f.collection_check_boxes :vehicle, Lead::VEHICLE_OPTIONS, :strip, :strip do |b|  %>
+        <%= f.collection_check_boxes :vehicle, vehicle_options, :strip, :strip do |b|  %>
           <div class="form-check">
             <%= b.check_box class:"form-check-input" %>
             <%= b.label class:"form-check-label" %>
           </div>
         <% end %>
+        <%= inline_errors(lead, :vehicle) %>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-12 bg-light border rounded">
       <%= f.label :likelihood, "How likely would you be to consider Nissan for your new vehicle purchase?"  %>
-      <%= f.collection_radio_buttons :likelihood, Lead::LIKELIHOOD_OPTIONS, :itself, :itself do |b|  %>
+      <%= f.collection_radio_buttons :likelihood, likelihood_options, :itself, :itself do |b|  %>
         <div class="form-check">
           <%= b.radio_button class:"form-check-input" %>
           <%= b.label class:"form-check-label" %>
         </div>
       <% end %>
+      <%= inline_errors(lead, :likelihood) %>
     </div>
   </div>
 
@@ -92,6 +104,7 @@
     <% end %>
     <span>Poor</span>
     </div>
+    <%= inline_errors(lead, :opinion) %>
   </div>
 
   <p>RELEASE OF LIABILITY AND INDEMNITY AGREEMENT AND PUBLICITY AUTHORIZATION</p>
