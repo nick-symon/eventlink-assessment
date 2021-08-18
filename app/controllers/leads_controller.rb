@@ -8,7 +8,7 @@ class LeadsController < ApplicationController
     @lead = Lead.create(lead_params)
 
     if @lead.valid?
-      render plain: "Thanks for submitting!"
+      render "success"
     else
       render :new
     end
