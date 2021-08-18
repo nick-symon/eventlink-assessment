@@ -32,7 +32,7 @@
     <%# state will eventually be a drop down %>
     <div class="form-group col-md-3">
       <%= f.label :state  %>
-      <%= f.collection_select :state, us_states, :last, :first, {include_blank: true}, {class: "custom-select"}  %>
+      <%= f.collection_select :state, us_states, :last, :first, {include_blank: "Select State"}, {class: "custom-select"}  %>
       <%= inline_errors(lead, :state) %>
     </div>
     <div class="form-group col-md-3">
@@ -55,7 +55,7 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-6 bg-light border rounded">
+    <div class="form-group col-md-6 bg-light border rounded p-3">
         <%= f.label :purchase_timing, "I plan on purchasing my next vehicle within"  %>
         <%= f.collection_radio_buttons :purchase_timing, purchase_timing_options, :itself, :itself do |b| %>
           <div class="form-check">
@@ -65,9 +65,9 @@
         <% end %>
         <%= inline_errors(lead, :purchase_timing) %>
     </div>
-    <div class="form-group col-md-6 bg-light border rounded">
+    <div class="form-group col-md-6 bg-light border rounded p-3">
         <%= f.label :vehicle, "I am interested in the following Vehicles"  %>
-        <%= f.collection_check_boxes :vehicle, vehicle_options, :strip, :strip do |b|  %>
+        <%= f.collection_check_boxes :vehicle, vehicle_options, :itself, :itself do |b|  %>
           <div class="form-check">
             <%= b.check_box class:"form-check-input" %>
             <%= b.label class:"form-check-label" %>
@@ -78,7 +78,7 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-12 bg-light border rounded">
+    <div class="form-group col-md-12 bg-light border rounded p-3">
       <%= f.label :likelihood, "How likely would you be to consider Nissan for your new vehicle purchase?"  %>
       <%= f.collection_radio_buttons :likelihood, likelihood_options, :itself, :itself do |b|  %>
         <div class="form-check">
@@ -91,18 +91,20 @@
   </div>
 
 
-  <div class="form-row bg-light border rounded">
+  <div class="form-row bg-light border rounded mb-2 p-3">
     <div class="form-group col-md-12">
     <%= f.label :opinion, "What is your overall opinion of Nissan?"  %>
     <br>
-    <span>Excellent</span>
-    <%= f.collection_radio_buttons :opinion, (1..10).map{|n| [n,n]}, :first, :last do |b| %>
-      <div class="form-check form-check-inline">
-        <%= b.radio_button class:"form-check-input" %>
-        <%= b.label class:"form-check-label" %>
+      <div class="flex-container">
+        <span class="poor-text">Poor</span>
+        <%= f.collection_radio_buttons :opinion, (1..10).map{|n| [n,n]}, :first, :last do |b| %>
+          <div class="form-check form-check-inline inline-flex-container">
+            <%= b.label class:"form-check-label" %>
+            <%= b.radio_button class:"form-check-input" %>
+          </div>
+        <% end %>
+        <span>Excellent</span>
       </div>
-    <% end %>
-    <span>Poor</span>
     </div>
     <%= inline_errors(lead, :opinion) %>
   </div>
@@ -115,6 +117,7 @@
     <div class="form-group col-md-12">
       <%= f.check_box :release_acceptance %>
       <%= f.label :release_acceptance, "I have read and understood this entire agreement" %>
+      <%= inline_errors(lead, :release_acceptance) %>
     </div>
   </div>
 
@@ -125,15 +128,14 @@
           <div class="signature-pad--body border">
             <canvas></canvas>
           </div> 
-          <div class="signature-pad--footer">
+          <div class="signature-pad--footer mt-2">
             <span>SIGNED ON <%= DateTime.now.strftime('%m/%d/%Y') %></span>
-            <button class="btn btn-secondary signature-pad--clear">Clear Signature</button>
+            <button class="btn btn-secondary signature-pad--clear ml-1">Clear Signature</button>
           </div>
         </div>
     </div>
   </div>
 
-  <%# Add signed on next to 'clear signature button' using todays date helper %>
   <div class="row">
     <div class="form-group col-md-12">
       <%= f.check_box :notification_acceptance %>
@@ -148,5 +150,5 @@
     </div>
   </div>
 
-  <%= f.submit "Submit", class: "btn btn-danger btn-lg btn-block signature-pad--save" %>
+  <%= f.submit "Submit", class: "btn btn-danger btn-lg btn-block signature-pad--save mb-4" %>
 <% end %>

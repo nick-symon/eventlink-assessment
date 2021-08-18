@@ -9,7 +9,8 @@ class Lead < ApplicationRecord
   validates :email, confirmation: true
   validates :email_confirmation, presence: true
   validates :purchase_timing, presence: true
-  validates :vehicle, presence: true
+  validates :vehicle, length: { minimum: 1 }
   validates :likelihood, presence: true
   validates :opinion, presence: true
+  validates :release_acceptance, presence: true
 end
